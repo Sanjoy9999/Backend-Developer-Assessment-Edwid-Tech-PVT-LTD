@@ -1,0 +1,48 @@
+Questions you can ask (based on your news.json)
+
+AI Medicine
+What are the latest advancements in AI medicine?
+
+Renewable Energy
+Can you summarize recent developments in renewable energy?
+
+
+Medicine (AI)
+“How does the new AI model predict drug side effects before trials?”
+
+
+SpaceX / Starship
+“What happened during SpaceX’s latest Starship launch and did it reach orbit?”
+
+
+Mars / Perseverance
+“What evidence of ancient water did Perseverance find on Mars, and why is it important?”
+
+
+Climate Summit
+“What were the main outcomes of the Paris climate summit and the 2050 pledge?”
+
+
+Crypto Regulation
+“What is the EU MiCA regulation and what problem does it aim to solve?”
+
+
+Energy Tech (choose one)
+“What’s new about the solid-state EV battery and how does it change range/charging time?”
+
+
+Quantum Computing
+“What was Google’s quantum milestone and why is it significant?”
+
+
+Climate Summit
+“What did leaders agree on at the Paris climate summit about warming and renewables?”
+
+
+Malaria Vaccine
+“What’s notable about the newly approved malaria vaccine?”
+
+
+
+Carbon Capture (Iceland)
+“Where is the largest direct air capture plant, and how much CO2 does it capture per year?”

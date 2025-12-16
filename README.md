@@ -84,7 +84,29 @@ graph TD
 ## Visual Flow By Sequence Diagram
 
 ```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'background': '#0b0f1a', 'primaryColor': '#1f2940', 'secondaryColor': '#27334a', 'primaryTextColor': '#e8ecf5', 'tertiaryTextColor': '#e8ecf5' }}}%%
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'background': '#0d1117',
+    'primaryColor': '#0d1117',
+    'secondaryColor': '#161b22',
+    'tertiaryColor': '#161b22',
+    'primaryTextColor': '#e6edf3',
+    'secondaryTextColor': '#e6edf3',
+    'tertiaryTextColor': '#e6edf3',
+    'lineColor': '#30363d',
+    'signalColor': '#e6edf3',
+    'signalTextColor': '#e6edf3',
+    'actorBkg': '#0d1117',
+    'actorBorder': '#30363d',
+    'actorTextColor': '#e6edf3',
+    'activationBkgColor': '#161b22',
+    'activationBorderColor': '#30363d',
+    'noteBkgColor': '#161b22',
+    'noteTextColor': '#e6edf3',
+    'noteBorderColor': '#30363d'
+  }
+}}%%
 sequenceDiagram
   participant Client
   participant API as Express API
@@ -95,7 +117,7 @@ sequenceDiagram
   participant Gemini as Google Gemini LLM
   participant PG as Postgres DB
 
-  rect rgb(240,240,255)
+  rect rgb(13,17,23)
   Note over API: Startup
   API->>API: initServices()
   API->>PG: connectDB() + ensure interactions table
@@ -103,7 +125,7 @@ sequenceDiagram
   API->>Qdrant: initCollection(news, size=384, cosine)
   end
 
-  rect rgb(240,255,240)
+  rect rgb(22,27,34)
   Note over Client,API: Ingestion Request
   Client->>API: POST /api/ingest { data[] }
   API->>API: validateRequest(schemas.ingest)
@@ -121,7 +143,7 @@ sequenceDiagram
   Worker-->>Worker: job completed
   end
 
-  rect rgb(255,240,240)
+  rect rgb(22,27,34)
   Note over Client,API: Chat Request
   Client->>API: POST /api/chat { session_id, query }
   API->>API: validateRequest(schemas.chat)
@@ -138,7 +160,7 @@ sequenceDiagram
   API-->>Client: { answer, sources, sessionId }
   end
 
-  rect rgb(240,240,240)
+  rect rgb(13,17,23)
   Note over Client,API: History Endpoints
   Client->>API: GET /api/history/:sessionId
   API->>PG: SELECT interactions

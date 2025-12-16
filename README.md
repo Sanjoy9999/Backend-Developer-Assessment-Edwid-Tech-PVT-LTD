@@ -84,6 +84,7 @@ graph TD
 ## Visual Flow By Sequence Diagram
 
 ```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'background': '#0b0f1a', 'primaryColor': '#1f2940', 'secondaryColor': '#27334a', 'primaryTextColor': '#e8ecf5', 'tertiaryTextColor': '#e8ecf5' }}}%%
 sequenceDiagram
   participant Client
   participant API as Express API
@@ -372,57 +373,3 @@ Notes:
 - **Postgres connection**: verify `DATABASE_URL`; containers healthy; API retries 5 times.
 - **Redis issues**: if API runs locally, use `REDIS_URL=redis://localhost:6379`; if API runs in Docker Compose, the service name `redis` is correct.
 - **Embedding/LLM errors**: verify `HF_API_KEY` and `GOOGLE_API_KEY` and outbound network access.
-
-## Demo Video Checklist (≤5 minutes)
-
-1. Start Docker:
-
-```bash
-docker-compose up --build
-```
-
-1. Ingest (choose one):
-
-   Use sample file via empty body:
-
-   ```bash
-   curl -X POST http://localhost:3000/api/ingest -H "Content-Type: application/json" -d "{}"
-   ```
-
-   Or ingest custom data:
-
-   ```bash
-   curl -X POST http://localhost:3000/api/ingest \
-     -H "Content-Type: application/json" \
-     -d '{"data":[{"title":"Bitcoin hits $50k","content":"...","source":"CryptoNews"}]}'
-   ```
-
-1. Chat (show Gemini response):
-
-   ```bash
-   curl -X POST http://localhost:3000/api/chat \
-     -H "Content-Type: application/json" \
-     -d '{"session_id":"demo1","query":"What are the latest updates?"}'
-   ```
-
-1. Show SQL logs in Postgres (`interactions` table):
-
-```bash
-docker-compose exec postgres psql -U postgres -d news_rag -c "SELECT id, session_id, response_time, created_at FROM interactions ORDER BY id DESC LIMIT 10;"
-```
-
-1. (Optional) Show history endpoint:
-
-```bash
-curl http://localhost:3000/api/history/demo1
-```
-
-## Live Deployment (Optional)
-
-If you deploy the API (Render/Railway/AWS), you typically want managed dependencies:
-
-- **Postgres**: managed Postgres, set `DATABASE_URL`
-- **Redis**: managed Redis, set `REDIS_URL`
-- **Qdrant**: Qdrant Cloud (or self-host), set `QDRANT_URL`
-
-When using managed services, keep the API container stateless; Redis remains the queue + short-term memory, while Postgres persists interaction logs.
